@@ -68,11 +68,7 @@ esPerroResponsable unPerro = (>3).cantidadJuguetes.diaDeCampo $ unPerro
 cantidadJuguetes :: Perro -> Int
 cantidadJuguetes unPerro = length.juguetesFav $ unPerro
 
-{-
-Que un perro realice una rutina de la guardería (que realice todos sus ejercicios). 
-Para eso, el tiempo de la rutina no puede ser mayor al tiempo de permanencia. 
-En caso de que esta condición no se cumpla, el perro no hace nada.
--}
+
 realizarRutina :: Guarderia -> Perro -> Perro
 realizarRutina unaGuarderia unPerro
     | tiempoRutina unaGuarderia <= tiempoGuarderia unPerro = realizarEjercicios unaGuarderia unPerro
@@ -90,12 +86,8 @@ ejerciciosRutina unaGuarderia = map ejercicioActividad (rutina unaGuarderia)
 ejercicioActividad :: Actividad -> Ejercicio
 ejercicioActividad (unEjercicio, _) = unEjercicio
 
-{-
-Dados unos perros, reportar todos los que quedan cansados después de realizar la rutina de una guardería. 
-Es decir, que su energía sea menor a 5 luego de realizar todos los ejercicios.
--}
+
 perrosCansados :: Guarderia -> [Perro] -> [Perro]
---perrosCansados unaGuarderia unosPerros = filter energiaMenor5 (perrosPostRutina unaGuarderia unosPerros)
 perrosCansados unaGuarderia unosPerros = filter energiaMenor5 . perrosPostRutina unaGuarderia $ unosPerros
 
 perrosPostRutina :: Guarderia -> [Perro] -> [Perro]
